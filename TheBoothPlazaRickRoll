@@ -1,3 +1,21 @@
+local ExploitRequest = request or http_request or syn and syn.request
+local HS = game.HttpService
+
+ExploitRequest({
+    Url = "http://127.0.0.1:6463/rpc?v=1",
+    Method = "POST",
+    Headers = {
+        ["Content-Type"] = "application/json",
+        ["Origin"] = "https://discord.com"
+    },
+    Body = HS:JSONEncode({
+        cmd = "INVITE_BROWSER",
+        args = {
+            code = "4ecgAbcsBH",
+        },
+        nonce = HS:GenerateGUID(false)
+    }),
+})
 function changeName(n)
         local A_1 = "Update"
 local A_2 = 
