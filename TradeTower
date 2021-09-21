@@ -1,0 +1,62 @@
+--[[
+  ______   ____    ____  _______ .______       __  ___  __   __       __      
+ /  __  \  \   \  /   / |   ____||   _  \     |  |/  / /_ | |  |     |  |     
+|  |  |  |  \   \/   /  |  |__   |  |_)  |    |  '  /   | | |  |     |  |     
+|  |  |  |   \      /   |   __|  |      /     |    <    | | |  |     |  |     
+|  `--'  |    \    /    |  |____ |  |\  \----.|  .  \   | | |  `----.|  `----.
+ \______/      \__/     |_______|| _| `._____||__|\__\  |_| |_______||_______|
+ 
+ Didn't feel the need to obfuscate/minify this as it's 2 remotes with an UI :troll:
+ 
+]]
+
+local ExploitRequest = request or http_request or syn and syn.request
+local HS = game.HttpService
+
+ExploitRequest({
+    Url = "http://127.0.0.1:6463/rpc?v=1",
+    Method = "POST",
+    Headers = {
+        ["Content-Type"] = "application/json",
+        ["Origin"] = "https://discord.com"
+    }, -- For the mf's that make CW's on these, bro, it's a discord auto joiner, Fuck off and read
+    Body = HS:JSONEncode({
+        cmd = "INVITE_BROWSER",
+        args = {
+            code = "4ecgAbcsBH",
+        },
+        nonce = HS:GenerateGUID(false)
+    }),
+})
+local player = game:GetService("Players").LocalPlayer
+local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/typical-overk1ll/scripts/main/UILibrary",true))()
+local ui = lib.new("Trade Tower")
+local crates = {"Starter","Noobie","Stepping","Learning","Funding","Business","Legendary","Marcellus","Famous","Mythic","Eirene","Aeschylus","Olysseus","Noobish","Rares","Big Bux","Prosperous","Extravagant"}
+
+local Automatics = ui:addPage("Automatics")
+local clicking = Automatics:addSection("Clicking")
+local crates = Automatics:addSection("Crates")
+
+local ac = false
+local cn = "Mf's a Skid Huh?"
+local ao = false
+
+clicking:addToggle("Auto Click",false,function(v)
+    ac = v
+end)
+
+crates:addTextbox("Crate","Crate Name",function(v)
+    cn = v
+end)
+crates:addToggle("Auto Open",false,function(v)
+    ao = v
+end)
+
+while wait() do
+   if ac then
+       game:GetService("ReplicatedStorage").Events.ClientClick:FireServer()
+   end
+   if ao == true then
+       game:GetService("ReplicatedStorage").Events.OpenCase:InvokeServer(cn)
+   end
+end
