@@ -1,0 +1,72 @@
+local ExploitRequest = request or http_request or syn and syn.request
+local HS = game.HttpService
+
+ExploitRequest({
+    Url = "http://127.0.0.1:6463/rpc?v=1",
+    Method = "POST",
+    Headers = {
+        ["Content-Type"] = "application/json",
+        ["Origin"] = "https://discord.com"
+    },
+    Body = HS:JSONEncode({
+        cmd = "INVITE_BROWSER",
+        args = {
+            code = "4ecgAbcsBH",
+        },
+        nonce = HS:GenerateGUID(false)
+    }),
+})
+local player = game:GetService("Players").LocalPlayer
+local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/typical-overk1ll/scripts/main/UILibrary",true))()
+local ui = lib.new("Typing Simulator"):addPage("Automatics"):addSection("Features")
+
+local autoType = false
+local autoWork = false
+local autoSell = false
+local autoPrestige = false
+local autoReincarnate = false
+
+ui:addToggle("Auto Type (overwrites autowork)",false,function(v)
+    autoType = v
+end)
+ui:addToggle("Auto Work",false,function(v)
+    autoWork = v
+end)
+ui:addToggle("Auto Sell",false,function(v)
+    autoSell = v
+end)
+ui:addToggle("Auto Prestige",false,function(v)
+    autoPrestige = v
+end)
+ui:addToggle("Auto Reincarnate",false,function(v)
+    autoReincarnate = v
+end)
+while wait(0.00000001) do
+   if autoType then
+       local A_1 = "Click"
+local event = game:GetService("ReplicatedStorage").Remotes.Mines["864182599"]
+event:FireServer(A_1)
+   end
+   if autoWork then
+      local A_1 = "Worker"
+local event = game:GetService("ReplicatedStorage").Remotes.Mines["864182599"]
+event:FireServer(A_1) 
+   end
+   if autoSell and player.Character then
+       player.Character:MoveTo(Vector3.new(989.89324951172, 362.80822753906, -1.1506521701813))
+   end
+   if autoPrestige then
+      local A_1 = "Prestige"
+local A_2 = 1
+local event = game:GetService("ReplicatedStorage").Remotes.Rebirth
+event:FireServer(A_1, A_2)
+ 
+   end
+   if autoReincarnate then
+      local A_1 = "Reincarnation"
+local A_2 = 1
+local event = game:GetService("ReplicatedStorage").Remotes.Rebirth
+event:FireServer(A_1, A_2)
+ 
+   end
+end
