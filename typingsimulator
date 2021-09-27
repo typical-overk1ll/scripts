@@ -32,7 +32,7 @@ end)
 ui:addToggle("Auto Work",false,function(v)
     autoWork = v
 end)
-ui:addToggle("Auto Sell",false,function(v)
+ui:addToggle("Auto Sell (epilepsy warning)",false,function(v)
     autoSell = v
 end)
 ui:addToggle("Auto Prestige",false,function(v)
