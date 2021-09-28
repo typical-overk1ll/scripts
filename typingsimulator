@@ -32,7 +32,7 @@ end)
 ui:addToggle("Auto Work",false,function(v)
     autoWork = v
 end)
-ui:addToggle("Auto Sell (epilepsy warning)",false,function(v)
+ui:addToggle("Auto Sell",false,function(v)
     autoSell = v
 end)
 ui:addToggle("Auto Prestige",false,function(v)
@@ -41,15 +41,15 @@ end)
 ui:addToggle("Auto Reincarnate",false,function(v)
     autoReincarnate = v
 end)
-while wait(0.00000001) do
+while wait() do
    if autoType then
        local A_1 = "Click"
-local event = game:GetService("ReplicatedStorage").Remotes.Mines["864182599"]
+local event = game:GetService("ReplicatedStorage").Remotes.Mines:FindFirstChild(player.UserId)
 event:FireServer(A_1)
    end
    if autoWork then
       local A_1 = "Worker"
-local event = game:GetService("ReplicatedStorage").Remotes.Mines["864182599"]
+local event = game:GetService("ReplicatedStorage").Remotes.Mines:FindFirstChild(player.UserId)
 event:FireServer(A_1) 
    end
    if autoSell and player.Character then
