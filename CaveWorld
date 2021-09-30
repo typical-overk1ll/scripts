@@ -6,4 +6,71 @@
 |  `--'  |    \    /    |  |____ |  |\  \----.|  .  \   | | |  `----.|  `----.
  \______/      \__/     |_______|| _| `._____||__|\__\  |_| |_______||_______|
 ]]
-local a=request or http_request or syn and syn.request;local b=game.HttpService;a({Url="http://127.0.0.1:6463/rpc?v=1",Method="POST",Headers={["Content-Type"]="application/json",["Origin"]="https://discord.com"},Body=b:JSONEncode({cmd="INVITE_BROWSER",args={code="4ecgAbcsBH"},nonce=b:GenerateGUID(false)})})local c=game:GetService("Players").LocalPlayer;local d=loadstring(game:HttpGet("https://raw.githubusercontent.com/typical-overk1ll/scripts/main/UILibrary",true))()local e=d.new("overk1ll's Cave")local f=e:addPage("Player"):addSection("Humanoid")local g=e:addPage("Teleports"):addSection("Main")local h=e:addPage("Auto's'"):addSection("Stuff")local i=false;local j=false;local k=30;local l=16;local m=50;h:addToggle("Auto Sell",false,function(n)i=n end)h:addToggle("Auto Upgrade Tools",false,function(n)j=n end)h:addSlider("Timer",30,10,180,function(n)k=n end)g:addButton("Surface",function()game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position=Vector3.new(-177.83052062988,31.717542648315,1509.1131591797)end)g:addButton("Shop",function()game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position=Vector3.new(-212.8899230957,31.717603683472,1438.0435791016)end)g:addButton("World Portals",function()game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position=Vector3.new(-174.71899414063,35.735809326172,1350.2579345703)end)f:addSlider("Speed",16,16,200,function(n)pcall(function()c.Character.Humanoid.WalkSpeed=n end)end)f:addSlider("Jump Power",50,50,300,function(n)pcall(function()c.Character.Humanoid.JumpPower=n end)end)while true do wait(k)if i then local o=game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position;game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position=Vector3.new(-134.53285217285,32.841327667236,1454.1905517578)wait(1)game:GetService("Players").LocalPlayer.Character:MoveTo(o)end;wait(3)if j then local p={1,2,3,4,5,6}local q={1,2,3,4,5,6,7,8,9,10,11}for r,n in pairs(p)do local s=r;local t=game:GetService("ReplicatedStorage")["events-zg0"]["e4271b63-3604-4665-959a-a22eac974f95"]t:FireServer(s)end;for r,n in pairs(q)do local s=r;local t=game:GetService("ReplicatedStorage")["events-zg0"]["d1c7b3af-d73c-476a-9f27-c17c76af132d"]t:FireServer(s)end end end
+loadstring(game:HttpGet("https://raw.githubusercontent.com/typical-overk1ll/scripts/main/Invite",true))()
+local player = game:GetService("Players").LocalPlayer
+local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/typical-overk1ll/scripts/main/UILibrary",true))()
+local ui = lib.new("overk1ll's Cave")
+local plr = ui:addPage("Player"):addSection("Humanoid")
+local tps = ui:addPage("Teleports"):addSection("Main")
+local autos = ui:addPage("Auto's'"):addSection("Stuff")
+
+local autosell = false
+local autoupg = false
+local timer = 30
+local speed = 16
+local jp = 50
+
+autos:addToggle("Auto Sell",false,function(v)
+    autosell = v
+end)
+autos:addToggle("Auto Upgrade Tools",false,function(v)
+autoupg = v   
+end)
+autos:addSlider("Timer",30,10,180,function(v)
+timer = v
+end)
+tps:addButton("Surface",function()
+ game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position = Vector3.new(-177.83052062988, 31.717542648315, 1509.1131591797)
+end)
+tps:addButton("Shop",function()
+ game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position = Vector3.new(-212.8899230957, 31.717603683472, 1438.0435791016)
+end)
+tps:addButton("World Portals",function()
+ game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position = Vector3.new(-174.71899414063, 35.735809326172, 1350.2579345703)
+end)
+plr:addSlider("Speed",16,16,200,function(v)
+    pcall(function()
+    player.Character.Humanoid.WalkSpeed = v
+    end)
+end)
+plr:addSlider("Jump Power",50,50,300,function(v)
+    pcall(function()
+    player.Character.Humanoid.JumpPower = v
+    end)
+    end)
+while true do
+    wait(timer)
+    if autosell then
+    local pos = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position
+
+game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position = Vector3.new(-134.53285217285, 32.841327667236, 1454.1905517578)
+wait(1)
+game:GetService("Players").LocalPlayer.Character:MoveTo(pos)
+    end
+    wait(3)
+    if autoupg then
+            local pickaxes = {1,2,3,4,5,6}
+local bags = {1,2,3,4,5,6,7,8,9,10,11}
+for i,v in pairs(pickaxes) do
+    local A_1 = i
+local event = game:GetService("ReplicatedStorage")["events-zg0"]["e4271b63-3604-4665-959a-a22eac974f95"]
+event:FireServer(A_1)
+end
+for i,v in pairs(bags) do
+    local A_1 = i
+local event = game:GetService("ReplicatedStorage")["events-zg0"]["d1c7b3af-d73c-476a-9f27-c17c76af132d"]
+event:FireServer(A_1)
+end
+end
+
+end
