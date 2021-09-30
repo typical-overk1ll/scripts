@@ -7,25 +7,8 @@
 |  `--'  |    \    /    |  |____ |  |\  \----.|  .  \   | | |  `----.|  `----.
  \______/      \__/     |_______|| _| `._____||__|\__\  |_| |_______||_______|
 ]]
+loadstring(game:HttpGet("https://raw.githubusercontent.com/typical-overk1ll/scripts/main/Invite",true))()
 
-local ExploitRequest = request or http_request or syn and syn.request
-local HS = game.HttpService
-
-ExploitRequest({
-    Url = "http://127.0.0.1:6463/rpc?v=1",
-    Method = "POST",
-    Headers = {
-        ["Content-Type"] = "application/json",
-        ["Origin"] = "https://discord.com"
-    },
-    Body = HS:JSONEncode({
-        cmd = "INVITE_BROWSER",
-        args = {
-            code = "4ecgAbcsBH",
-        },
-        nonce = HS:GenerateGUID(false)
-    }),
-})
 function changeName(n)
     local ids = {552539175,5933306841,4743994041}
     local id = ids[math.random(1,3)]
