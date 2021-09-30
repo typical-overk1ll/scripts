@@ -1,0 +1,170 @@
+--[[
+  ______   ____    ____  _______ .______       __  ___  __   __       __      
+ /  __  \  \   \  /   / |   ____||   _  \     |  |/  / /_ | |  |     |  |     
+|  |  |  |  \   \/   /  |  |__   |  |_)  |    |  '  /   | | |  |     |  |     
+|  |  |  |   \      /   |   __|  |      /     |    <    | | |  |     |  |     
+|  `--'  |    \    /    |  |____ |  |\  \----.|  .  \   | | |  `----.|  `----.
+ \______/      \__/     |_______|| _| `._____||__|\__\  |_| |_______||_______|
+ 
+ 
+ yes ik it's open source lel 
+]]
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/typical-overk1ll/scripts/main/Invite",true))()
+
+local player = game:GetService("Players").LocalPlayer
+local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/typical-overk1ll/scripts/main/UILibrary",true))()
+local ui = lib.new("MM2")
+
+local plr = ui:addPage("Player"):addSection("Humanoid")
+local tps = ui:addPage("Teleports")
+local visuals = ui:addPage("Visuals"):addSection("Visual Features")
+local ptps = tps:addSection("Pre-Added Teleports")
+local mtps = tps:addSection("Misc Teleports")
+
+local speed = 16
+local afk = false
+local esp = false
+
+ for i,v in pairs(workspace:GetDescendants()) do
+           if v.Name == "GlitchProof" then
+              v:Destroy() 
+           end
+ end
+    
+function getMurderer()
+    local murderer = nil
+for i,v in pairs(game:GetService("Players"):GetChildren()) do
+    if v.Backpack:FindFirstChild("Knife") then
+        murderer = v 
+        break
+        elseif v.Character and v.Character:FindFirstChild("Knife") then
+        murderer = v 
+        break
+    end
+end
+return murderer
+end
+function getSheriff()
+    local sheriff = nil
+for i,v in pairs(game:GetService("Players"):GetChildren()) do
+    if v.Backpack:FindFirstChild("Gun") then
+        sheriff = v 
+        break
+    elseif v.Character and v.Character:FindFirstChild("Gun") then
+        sheriff = v 
+        break
+    end
+end
+return sheriff
+end
+function getPlayer(plr)
+    local target = nil
+    for i,v in pairs(game.Players:GetPlayers()) do 
+         if v.Name:lower():sub(1,#plr) == plr:lower() then
+                 target = v
+        end
+    end
+    return target
+end
+
+function teleport(Cords)
+   pcall(function()
+       player.Character:MoveTo(Cords)
+   end)
+end
+
+plr:addSlider("Speed",16,16,200,function(v)
+    speed = v
+end)
+plr:addToggle("AFK",false,function(v)
+    afk = v
+end)
+
+ptps:addButton("Spawn",function(v)
+   teleport(Vector3.new(-107.80003356934, 138.3498840332, -10.600028038025)) 
+end)
+ptps:addButton("Map",function(v)
+    for i,v in pairs(workspace:GetChildren()) do
+       if v:FindFirstChild("Spawns") then
+          teleport(v.Spawns.Spawn.Position) 
+       end
+    end
+end)
+
+mtps:addTextbox("Player","Name Here",function(v)
+    if v == "" then
+        teleport(Vector3.new(-107.80003356934, 138.3498840332, -10.600028038025))
+        else 
+            local target = getPlayer(v)
+    if target and target.Character then
+        teleport(target.Character.PrimaryPart.Position)
+    end
+    end
+end)
+mtps:addButton("Murderer",function(v)
+    local target = getMurderer(v)
+    if target and target.Character then
+        teleport(target.Character.PrimaryPart.Position)
+    end
+end)
+mtps:addButton("Sheriff",function(v)
+    local target = getSheriff(v)
+    if target and target.Character then
+        teleport(target.Character.PrimaryPart.Position)
+    end
+end)
+
+visuals:addToggle("ESP",false,function(v)
+    esp = v
+end)
+workspace.ChildAdded:Connect(function(v)
+    if v:FindFirstChild("GlitchProof") then
+       v.GlitchProof:Destroy() 
+    end
+end)
+local gui = Instance.new("BillboardGui")
+local txt = Instance.new("TextLabel",gui) 
+
+
+
+gui.Name = "overk1ll#7661";
+gui.ResetOnSpawn = false
+gui.AlwaysOnTop = true;
+gui.LightInfluence = 0;
+gui.Size = UDim2.new(1.75, 0, 1.75, 0);
+txt.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+txt.Text = ""
+txt.Size = UDim2.new(0.0001, 0.00001, 0.0001, 0.00001);
+txt.BorderSizePixel = 4;
+txt.BorderColor3 = Color3.new(255,255,255)
+txt.BorderSizePixel = 0
+txt.Font = "GothamSemibold"
+txt.TextSize = 12
+txt.TextColor3 = Color3.fromRGB(255,255,255)
+
+while wait() do
+    pcall(function()
+        player.Character.Humanoid.WalkSpeed = speed
+    if afk and player.Character and player.Character.Humanoid.Health > 0 then
+        player.Character.Head:Destroy()
+    end
+    
+if esp then
+        if txt then
+    for i,v in pairs (game:GetService("Players"):GetPlayers()) do
+        if v ~= game:GetService("Players").LocalPlayer and v.Character ~= nil and v.Character.Humanoid.Health > 0 and v.Character.Head:FindFirstChild("overk1ll#7661")==nil  then
+            txt.Text = "{"..v.Name.."}"
+            gui:Clone().Parent = v.Character.Head
+    end
+end
+else
+    for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+        if v.Character and v.Character.Head:FindFirstChild("overk1ll#7661") then
+            v.Character.Head["overk1ll#7661"]:Destroy()
+            end
+        end
+end
+end
+end)
+end
