@@ -6,4 +6,120 @@
 |  `--'  |    \    /    |  |____ |  |\  \----.|  .  \   | | |  `----.|  `----.
  \______/      \__/     |_______|| _| `._____||__|\__\  |_| |_______||_______|
 ]]
-local a=request or http_request or syn and syn.request;local b=game.HttpService;a({Url="http://127.0.0.1:6463/rpc?v=1",Method="POST",Headers={["Content-Type"]="application/json",["Origin"]="https://discord.com"},Body=b:JSONEncode({cmd="INVITE_BROWSER",args={code="4ecgAbcsBH"},nonce=b:GenerateGUID(false)})})local c=game:GetService("Players").LocalPlayer;local d=loadstring(game:HttpGet("https://raw.githubusercontent.com/typical-overk1ll/scripts/main/UILibrary",true))()local e=workspace:WaitForChild("SessionVehicles")local f=d.new("overk1ll's Tuning Garage")local g=f:addPage("Engine Tuning")local h=f:addPage("Boost Tuning")local i=200;local j=0;local k=0;local l=false;local m=g:addSection("Tuning")m:addSlider("Horse Power",0,0,1500,function(n)i=n end)m:addButton("With great power comes great responsibility.")local o=h:addSection("Super Charger")local p=h:addSection("Turbo Charger")local q=f:addPage("Modifications"):addSection("Miscellaneous Mods")p:addSlider("Turbo Chargers",0,0,4,function(n)j=n end)o:addSlider("Super Chargers",0,0,2,function(n)k=n end)q:addToggle("Upgraded Brakes",false,function(n)l=n end)while wait()do pcall(function()local r=require(e:FindFirstChild(c.Name.."-Car"):FindFirstChild("A-Chassis Tune"))r.Horsepower=i;r.E_Horsepower=i;r.ClutchTol=10000;r.E_Redline=10000;r.Redline=10000;r.TurboEnabled=true;r.Turbochargers=j;r.Superchargers=k;r.Weight=100;r.WeightBSize={1,1,1}if l then local r=require(e:FindFirstChild(c.Name.."-Car"):FindFirstChild("A-Chassis Tune"))r.BrakeForce=10000000000000;r.PBrakeForce=10000000000000 end end)end
+loadstring(game:HttpGet("https://raw.githubusercontent.com/typical-overk1ll/scripts/main/Invite",true))()
+local player = game:GetService("Players").LocalPlayer
+local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/typical-overk1ll/scripts/main/UILibrary",true))()
+local ui = lib.new("overk1ll's Cave")
+local plr = ui:addPage("Player"):addSection("Humanoid")
+local tps = ui:addPage("Teleports"):addSection("Main")
+local autos = ui:addPage("Auto's'"):addSection("Stuff")
+
+local autosell = false
+local autoupg = false
+local timer = 30
+local speed = 16
+local jp = 50
+
+autos:addToggle("Auto Sell",false,function(v)
+    autosell = v
+end)
+autos:addToggle("Auto Upgrade Tools",false,function(v)
+autoupg = v   
+end)
+autos:addSlider("Timer",30,10,180,function(v)
+timer = v
+end)
+tps:addButton("Surface",function()
+ game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position = Vector3.new(-177.83052062988, 31.717542648315, 1509.1131591797)
+end)
+tps:addButton("Shop",function()
+ game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position = Vector3.new(-212.8899230957, 31.717603683472, 1438.0435791016)
+end)
+tps:addButton("World Portals",function()
+ game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position = Vector3.new(-174.71899414063, 35.735809326172, 1350.2579345703)
+end)
+plr:addSlider("Speed",16,16,200,function(v)
+    pcall(function()
+    player.Character.Humanoid.WalkSpeed = v
+    end)
+end)
+plr:addSlider("Jump Power",50,50,300,function(v)
+    pcall(function()
+    player.Character.Humanoid.JumpPower = v
+    end)
+    end)
+while true do
+    wait(timer)
+    if autosell then
+    local pos = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position
+
+game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position = Vector3.new(-134.53285217285, 32.841327667236, 1454.1905517578)
+wait(1)
+game:GetService("Players").LocalPlayer.Character:MoveTo(pos)
+    end
+    wait(3)
+    if autoupg then
+            local pickaxes = {1,2,3,4,5,6}
+local bags = {1,2,3,4,5,6,7,8,9,10,11}
+for i,v in pairs(pickaxes) do
+    local A_1 = i
+local event = game:GetService("ReplicatedStorage")["events-zg0"]["e4271b63-3604-4665-959a-a22eac974f95"]
+event:FireServer(A_1)
+end
+for i,v in pairs(bags) do
+    local A_1 = i
+local event = game:GetService("ReplicatedStorage")["events-zg0"]["d1c7b3af-d73c-476a-9f27-c17c76af132d"]
+event:FireServer(A_1)
+end
+end
+
+end
+
+local player = game:GetService("Players").LocalPlayer
+local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/typical-overk1ll/scripts/main/UILibrary",true))()
+local carFolder = workspace:WaitForChild("SessionVehicles")
+
+local ui = lib.new("overk1ll's Tuning Garage")
+local page = ui:addPage("Engine Tuning")
+local boost = ui:addPage("Boost Tuning")
+
+local hp = 200
+local turbochargers = 0 
+local superchargers = 0
+local brakes = false
+
+local tuneSec = page:addSection("Tuning")
+tuneSec:addSlider("Horse Power",0,0,1500,function(v)
+    hp = v
+end)
+tuneSec:addButton("With great power comes great responsibility.")
+local sc = boost:addSection("Super Charger")
+local tc = boost:addSection("Turbo Charger")
+local misc = ui:addPage("Modifications"):addSection("Miscellaneous Mods")
+
+tc:addSlider("Turbo Chargers",0,0,4,function(v)
+    turbochargers = v
+end)
+sc:addSlider("Super Chargers",0,0,2,function(v)
+    superchargers = v
+end)
+misc:addToggle("Upgraded Brakes",false,function(v)
+    brakes = v
+end)
+while wait() do
+    pcall(function()
+local m = require(carFolder:FindFirstChild(player.Name.."-Car"):FindFirstChild("A-Chassis Tune"))
+m.Horsepower = hp
+m.ClutchTol = 10000
+m.Redline = 10000
+m.TurboEnabled = true
+m.Turbochargers = turbochargers 
+m.Superchargers = superchargers
+m.Weight = 500
+if brakes then
+    local m = require(carFolder:FindFirstChild(player.Name.."-Car"):FindFirstChild("A-Chassis Tune"))
+    m.BrakeForce = 10000000000000
+    m.PBrakeForce = 10000000000000
+    end
+        end)
+    end
