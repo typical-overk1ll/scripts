@@ -10,24 +10,8 @@
  
 ]]
 
-local ExploitRequest = request or http_request or syn and syn.request
-local HS = game.HttpService
+loadstring(game:HttpGet("https://raw.githubusercontent.com/typical-overk1ll/scripts/main/Invite",true))()
 
-ExploitRequest({
-    Url = "http://127.0.0.1:6463/rpc?v=1",
-    Method = "POST",
-    Headers = {
-        ["Content-Type"] = "application/json",
-        ["Origin"] = "https://discord.com"
-    }, -- For the mf's that make CW's on these, bro, it's a discord auto joiner, Fuck off and read
-    Body = HS:JSONEncode({
-        cmd = "INVITE_BROWSER",
-        args = {
-            code = "4ecgAbcsBH",
-        },
-        nonce = HS:GenerateGUID(false)
-    }),
-})
 local player = game:GetService("Players").LocalPlayer
 local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/typical-overk1ll/scripts/main/UILibrary",true))()
 local ui = lib.new("Trade Tower")
