@@ -1,0 +1,186 @@
+--[[
+  ______   ____    ____  _______ .______       __  ___  __   __       __      
+ /  __  \  \   \  /   / |   ____||   _  \     |  |/  / /_ | |  |     |  |     
+|  |  |  |  \   \/   /  |  |__   |  |_)  |    |  '  /   | | |  |     |  |     
+|  |  |  |   \      /   |   __|  |      /     |    <    | | |  |     |  |     
+|  `--'  |    \    /    |  |____ |  |\  \----.|  .  \   | | |  `----.|  `----.
+ \______/      \__/     |_______|| _| `._____||__|\__\  |_| |_______||_______|
+]]
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/typical-overk1ll/scripts/main/Invite",true))()
+--pls dont skid
+--Wanted to make this a paid script at first but then realised that most vulnerabilities in this game have already been leaked and released as free scripts
+--Variables
+--Normals
+local player = game:GetService("Players").LocalPlayer
+local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/typical-overk1ll/scripts/main/UILibrary",true))()
+local ui = lib.new("Horrific Anti-Cheat")
+local farming = ui:addPage("Farming"):addSection("Features")
+local misc = ui:addPage("Misc")
+local randoms = misc:addSection("Random Features")
+local crates = misc:addSection("Free Items")
+local pets = misc:addSection("Free Equip")
+local visuals = ui:addPage("Visuals"):addSection("Features")
+--Features
+local missionFarm = false
+local esp = false
+--UI Buttons
+farming:addToggle("Mission Farm (Money+XP)",false,function(v)
+    missionFarm = v
+end)
+randoms:addButton("Grand Prize",function()
+    local event = game:GetService("ReplicatedStorage").GiveGrandPrize
+event:FireServer()
+end)
+randoms:addButton("Potion",function()
+    local A_1 = "Pass"
+local event = game:GetService("ReplicatedStorage").EventRemotes.Potion
+event:FireServer(A_1)
+local A_1 = "Drink"
+local event = game:GetService("ReplicatedStorage").EventRemotes.Potion
+event:FireServer(A_1)
+end)
+randoms:addButton("Invisible House",function()
+    local A_1 = Color3.new(0, 0, 1)
+local A_2 = "ForceField"
+local A_3 = 1
+local event = game:GetService("ReplicatedStorage").HouseColour
+event:FireServer(A_1, A_2, A_3)
+end)
+crates:addButton("Furniture",function()
+    local A_1 = 1e-59
+local A_2 = "Furniture"
+local event = game:GetService("ReplicatedStorage").ShopPurchase
+event:FireServer(A_1, A_2)
+end)
+crates:addButton("Ornament",function()
+    local A_1 = 1e-59
+local A_2 = "Ornament"
+local event = game:GetService("ReplicatedStorage").ShopPurchase
+event:FireServer(A_1, A_2)
+end)
+crates:addButton("Spooky",function()
+    local A_1 = 1e-59
+local A_2 = "Spooky"
+local event = game:GetService("ReplicatedStorage").ShopPurchase
+event:FireServer(A_1, A_2)
+end)
+crates:addButton("Death",function()
+    local A_1 = 1e-59
+local A_2 = "Death"
+local event = game:GetService("ReplicatedStorage").ShopPurchase
+event:FireServer(A_1, A_2)
+end)
+crates:addButton("House",function()
+    local A_1 = 1e-59
+local A_2 = "HouseChest"
+local event = game:GetService("ReplicatedStorage").ShopPurchase
+event:FireServer(A_1, A_2)
+end)
+crates:addButton("Egg",function()
+    local A_1 = 1e-59
+local A_2 = "Egg"
+local event = game:GetService("ReplicatedStorage").ShopPurchase
+event:FireServer(A_1, A_2)
+end)
+crates:addButton("Winter",function()
+    local A_1 = 1e-59
+local A_2 = "WinterChest"
+local event = game:GetService("ReplicatedStorage").ShopPurchase
+event:FireServer(A_1, A_2)
+end)
+crates:addButton("Easter",function()
+    local A_1 = 1e-59
+local A_2 = "Easter"
+local event = game:GetService("ReplicatedStorage").ShopPurchase
+event:FireServer(A_1, A_2)
+end)
+crates:addButton("Autumn",function()
+    local A_1 = 1e-59
+local A_2 = "Autumn"
+local event = game:GetService("ReplicatedStorage").ShopPurchase
+event:FireServer(A_1, A_2)
+end)
+crates:addButton("Heart Balloons",function()
+    local A_1 = 1e-59
+local A_2 = "HeartBalloons"
+local event = game:GetService("ReplicatedStorage").ShopPurchase
+event:FireServer(A_1, A_2)
+end)
+crates:addButton("Lunar",function()
+    local A_1 = 1e-59
+local A_2 = "LunarBundle"
+local event = game:GetService("ReplicatedStorage").ShopPurchase
+event:FireServer(A_1, A_2)
+end)
+visuals:addToggle("ESP",false,function(v)
+    esp = v
+end)
+--Add All Pets To The GUI
+for i,v in pairs(game:GetService("ReplicatedStorage").Chests.EggPets:GetChildren()) do
+   pets:addButton(v.Name,function()
+       local A_1 = v.Name
+local event = game:GetService("ReplicatedStorage").PetChange
+event:FireServer(A_1)
+
+   end)
+end
+--ESP Label
+local gui = Instance.new("BillboardGui")
+local txt = Instance.new("TextLabel",gui) 
+
+
+
+gui.Name = "overk1ll#7661";
+gui.ResetOnSpawn = false
+gui.AlwaysOnTop = true;
+gui.LightInfluence = 0;
+gui.Size = UDim2.new(1.75, 0, 1.75, 0);
+txt.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+txt.Text = ""
+txt.Size = UDim2.new(0.0001, 0.00001, 0.0001, 0.00001);
+txt.BorderSizePixel = 4;
+txt.BorderColor3 = Color3.new(255,255,255)
+txt.BorderSizePixel = 0
+txt.Font = "GothamSemibold"
+txt.TextSize = 12
+txt.TextColor3 = Color3.fromRGB(255,255,255)
+
+while wait(.1) do
+    --AFK Farm 
+    if winFarm and player.Character then
+        if not workspace:FindFirstChild("AFKPartLol") then
+            local afkpart = Instance.new("Part",workspace)
+            afkpart.Anchored = true
+            afkpart.Name = "AFKPartLol"
+            afkPart.Position = Vector3.new(-14.126986503601, 227.25735473633, 248.03942871094)
+            afkpart.Size = Vector3.new(5,1,5)
+            end
+        player.Character:MoveTo(workspace:FindFirstChild("AFKPartLol").Position)
+end
+    --Coin Farm
+    if missionFarm then
+        local A_1 = "MiissionSuccess3"
+        local event = game:GetService("ReplicatedStorage").EventRemotes.GhasterBlaster
+        event:FireServer(A_1)
+end
+--ESP
+if esp then
+    for i,v in pairs (game:GetService("Players"):GetPlayers()) do
+        pcall(function()
+        if v ~= game:GetService("Players").LocalPlayer and v.Character.Head:FindFirstChild("Cracked txt")==nil  then -- craeting checks for team check, local player etc
+            txt.Text = "{"..v.Name.."}"
+            gui:Clone().Parent = v.Character.Head
+        end
+end)
+end
+else
+    for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+        pcall(function()
+        if v.Character and v.Character.Head:FindFirstChild("overk1ll#7661") then
+            v.Character.Head["overk1ll#7661"]:Destroy()
+        end
+        end)
+        end
+end
+end
