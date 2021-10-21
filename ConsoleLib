@@ -33,6 +33,10 @@ Send An Error Marked Message
 
 lib:errorMessage("Your message here")
 
+Add a space in between messages
+
+lib:spacer()
+
 Set the color of the next printed messages
 
 lib:setColor("White")   note: replace White with any of the following colors (case sensitive):
@@ -184,16 +188,20 @@ function lib:message(msg)
     rconsoleprint(msg.."\n")
 end
 
+function lib:spacer()
+    rconsoleprint("\n")
+end
+
 function lib:infoMessage(msg)
-    rconsoleinfo(msg.."\n")
+    rconsoleinfo(msg")
 end
 
 function lib:warnMessage(msg)
-    rconsolewarn(msg.."\n")
+    rconsolewarn(msg")
 end
 
 function lib:errorMessage(msg)
-    rconsoleerr(msg.."\n")
+    rconsoleerr(msg")
 end
 
 function lib:setColor(color)
