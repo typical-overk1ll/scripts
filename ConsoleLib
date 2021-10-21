@@ -193,15 +193,15 @@ function lib:makeSpace()
 end
 
 function lib:infoMessage(msg)
-    rconsoleinfo(msg")
+    rconsoleinfo(msg)
 end
 
 function lib:warnMessage(msg)
-    rconsolewarn(msg")
+    rconsolewarn(msg)
 end
 
 function lib:errorMessage(msg)
-    rconsoleerr(msg")
+    rconsoleerr(msg)
 end
 
 function lib:setColor(color)
