@@ -35,7 +35,7 @@ lib:errorMessage("Your message here")
 
 Add a space in between messages
 
-lib:spacer()
+lib:makeSpace()
 
 Set the color of the next printed messages
 
@@ -188,7 +188,7 @@ function lib:message(msg)
     rconsoleprint(msg.."\n")
 end
 
-function lib:spacer()
+function lib:makeSpace()
     rconsoleprint("\n")
 end
 
