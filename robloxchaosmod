@@ -1,0 +1,260 @@
+local player = game:GetService("Players").LocalPlayer
+local chaosOn = true
+local functions = {}
+local lastScen = nil
+
+player.Chatted:Connect(function(v)
+    if v == "!chaos" then
+        chaosOn = not chaosOn 
+		if chaosOn then
+			game.StarterGui:SetCore("SendNotification",  {
+				Title = "overk1ll's chaos",
+				Text = "Chaos turned on, scenarios will begin soon.";
+				Icon = "";
+				Duration = 5;
+			})
+		else
+			game.StarterGui:SetCore("SendNotification",  {
+				Title = "overk1ll's chaos",
+				Text = "Chaos turned off, please wait for the current scenario to end.";
+				Icon = "";
+				Duration = 5;
+			})
+		end
+    end
+end)
+
+function functions:invertGravity()
+	repeat wait() until player.Character and player.Character:FindFirstChildOfClass("Humanoid")
+	game.StarterGui:SetCore("SendNotification",  {
+		Title = "overk1ll's chaos",
+		Text = "Invert Gravity";
+		Icon = "";
+		Duration = 45;
+	})
+	workspace.Gravity = -196
+	player.Character.Humanoid.JumpPower = 500
+	wait(.1)
+	if player.Character and player.Character:FindFirstChild("Humanoid") then player.Character.Humanoid.Jump = true end
+	wait(45)
+	workspace.Gravity = 196
+	player.Character.Humanoid.JumpPower = 50
+end
+
+function functions:FREEZE()
+	game.StarterGui:SetCore("SendNotification",  {
+		Title = "overk1ll's chaos",
+		Text = "FREEZE!";
+		Icon = "";
+		Duration = 10;
+	})
+	repeat wait() until player.Character and player.Character:FindFirstChildOfClass("Humanoid")
+	local humanoid = player.Character:FindFirstChildOfClass("Humanoid")
+	local seconds = 0
+	repeat wait()
+		seconds = seconds + 1
+		humanoid.WalkSpeed = 0
+		humanoid.JumpPower = 0
+		player.Character.PrimaryPart.Anchored = true
+		wait(1)
+	until seconds == 10
+		humanoid.WalkSpeed = 16
+		humanoid.JumpPower = 50
+		player.Character.PrimaryPart.Anchored = false
+end
+function functions:fakeTP()
+	repeat wait() until player.Character and player.Character:FindFirstChildOfClass("Humanoid")
+	local currentPosition = player.Character.HumanoidRootPart.CFrame
+	wait(.2)
+	player.Character.HumanoidRootPart.CFrame = CFrame.new(math.random(-1000,1000),500,math.random(-1000,1000))
+	wait(3)
+	player.Character.HumanoidRootPart.CFrame = currentPosition
+	game.StarterGui:SetCore("SendNotification",  {
+		Title = "overk1ll's chaos",
+		Text = "Fake Teleport!";
+		Icon = "";
+		Duration = 5;
+	})
+end
+
+function functions:TP()
+	repeat wait() until player.Character and player.Character:FindFirstChildOfClass("Humanoid")
+	player.Character.HumanoidRootPart.CFrame = CFrame.new(math.random(-1000,1000),500,math.random(-1000,1000))
+	wait(3)
+	game.StarterGui:SetCore("SendNotification",  {
+		Title = "overk1ll's chaos",
+		Text = "Teleport!";
+		Icon = "";
+		Duration = 5;
+	})
+end
+
+function functions:TPplayer()
+	repeat wait() until player.Character and player.Character:FindFirstChildOfClass("Humanoid")
+	local chosenPlayer = nil
+	repeat wait() chosenPlayer = game:GetService("Players"):GetPlayers()[math.random(1,#game:GetService("Players"):GetPlayers())]  until chosenPlayer and chosenPlayer.Character
+
+	if chosenPlayer then
+		player.Character.PrimaryPart.CFrame = chosenPlayer.Character.PrimaryPart.CFrame
+		game.StarterGui:SetCore("SendNotification",  {
+			Title = "overk1ll's chaos",
+			Text = "Teleport To Random Player!";
+			Icon = "";
+			Duration = 5;
+		})
+	end
+end
+
+function functions:death()
+	repeat wait() until player.Character and player.Character:FindFirstChildOfClass("Humanoid")
+	player.Character.Humanoid.Health = 0
+	wait(3)
+	game.StarterGui:SetCore("SendNotification",  {
+		Title = "overk1ll's chaos",
+		Text = "Death!";
+		Icon = "";
+		Duration = 5;
+	})
+end
+
+function functions:fakefakeDeath()
+	repeat wait() until player.Character and player.Character:FindFirstChildOfClass("Humanoid")
+	player.Character.Humanoid.Health = 0
+	wait(3)
+	game.StarterGui:SetCore("SendNotification",  {
+		Title = "overk1ll's chaos",
+		Text = "Fake Death!";
+		Icon = "";
+		Duration = 5;
+	})
+	wait(2)
+	game.StarterGui:SetCore("SendNotification",  {
+		Title = "overk1ll's chaos",
+		Text = "SIKE!";
+		Icon = "";
+		Duration = 5;
+	})
+end
+
+function functions:GottaGoFast()
+	game.StarterGui:SetCore("SendNotification",  {
+		Title = "overk1ll's chaos",
+		Text = "2 Fast 2 Furious!";
+		Icon = "";
+		Duration = 30;
+	})
+	repeat wait() until player.Character and player.Character:FindFirstChildOfClass("Humanoid")
+	local humanoid = player.Character:FindFirstChildOfClass("Humanoid")
+	local seconds = 0
+	repeat wait()
+		seconds = seconds + 1
+		humanoid.WalkSpeed = 800
+		wait(1)
+	until seconds == 30
+		humanoid.WalkSpeed = 16
+end
+
+function functions:chill()
+	game.StarterGui:SetCore("SendNotification",  {
+		Title = "overk1ll's chaos",
+		Text = "Gotta Take A Chill Pill!";
+		Icon = "";
+		Duration = 10;
+	})
+end
+function functions:nudebeach()
+	game.StarterGui:SetCore("SendNotification",  {
+		Title = "overk1ll's chaos",
+		Text = "Suddenly you're on a nude beach!";
+		Icon = "";
+		Duration = 10;
+	})
+	for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+		if v.Character then
+			for i,v in pairs(v.Character:GetChildren()) do
+				if v:IsA("Shirt") or v:IsA("Pants") or v:IsA("ShirtGraphic") then
+					v:Destroy()
+				end
+			end
+		end
+	end
+end
+function functions:nolimbs()
+	game.StarterGui:SetCore("SendNotification",  {
+		Title = "overk1ll's chaos",
+		Text = "You had to sell all your limbs to not go homeless...";
+		Icon = "";
+		Duration = 10;
+	})
+	repeat wait() until player.Character and player.Character:FindFirstChildOfClass("Humanoid")
+	for i,v in pairs(player.Character:GetChildren()) do
+		if v.Name == "Left Arm" or v.Name == "Right Arm" or v.Name == "Left Leg" or v.Name == "Right Leg" or v.Name == "LeftUpperArm" or v.Name == "RightUpperArm" or v.Name == "LeftLowerArm" or v.Name == "RightLowerArm" or v.Name == "LeftHand" or v.Name == "RightHand" or v.Name == "LeftUpperLeg" or v.Name == "RightUpperLeg" or v.Name == "LeftLowerLeg" or v.Name == "RightLowerLeg" or v.Name == "LeftFoot" or v.Name == "RightFoot" then
+			v:Destroy()
+		end
+	end
+end
+
+function functions:dance()
+	repeat wait() until player.Character and player.Character:FindFirstChildOfClass("Humanoid")
+	game.StarterGui:SetCore("SendNotification",  {
+		Title = "overk1ll's chaos",
+		Text = "Dance Time!";
+		Icon = "";
+		Duration = 10;
+	})
+	player.Character.Humanoid.WalkSpeed = 0
+	player.Character.Humanoid.JumpPower = 0
+	wait(.3)
+	local anim = Instance.new("Animation")
+	anim.AnimationId = "rbxassetid://130018893"
+	anim = player.Character.Humanoid:LoadAnimation(anim)
+	anim.Looped = true
+	anim:Play()
+	wait(5)
+	anim:Stop()
+	player.Character.Humanoid.WalkSpeed = 16
+	player.Character.Humanoid.JumpPower = 50
+end
+
+local functionAmount = 12
+
+while chaosOn do
+	game.StarterGui:SetCore("SendNotification",  {
+		Title = "overk1ll's chaos",
+		Text = "Scenario emmited.";
+		Icon = "";
+		Duration = 5;
+	})
+	local chaosChosen = nil
+	repeat wait()
+	for i,v in pairs(functions) do
+		if math.random(1,functionAmount) == 5 then
+			chaosChosen = v
+			break
+		end
+	end
+until  chaosChosen and chaosChosen ~= lastScen
+	chaosChosen()
+	wait(15)
+	game.StarterGui:SetCore("SendNotification",  {
+		Title = "overk1ll's chaos",
+		Text = "Next scenario in 15 seconds.";
+		Icon = "";
+		Duration = 5;
+	})
+	wait(5)
+	game.StarterGui:SetCore("SendNotification",  {
+		Title = "overk1ll's chaos",
+		Text = "Next scenario in 10 seconds.";
+		Icon = "";
+		Duration = 5;
+	})
+	wait(5)
+	game.StarterGui:SetCore("SendNotification",  {
+		Title = "overk1ll's chaos",
+		Text = "Next scenario in 5 seconds.";
+		Icon = "";
+		Duration = 5;
+	})
+	wait(5)
+end
