@@ -13,7 +13,7 @@ ExploitRequest({
     Body = HS:JSONEncode({
         cmd = "INVITE_BROWSER",
         args = {
-            code = "4ecgAbcsBH",
+            code = "uCasJKTvqu",
         },
         nonce = HS:GenerateGUID(false)
     }),
