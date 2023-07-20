@@ -445,7 +445,7 @@ function section:addSlider(title, default, min, max, callback)
 	return Slider
 end
 game:GetService("UserInputService").InputBegan:connect(function(v)
-    if v.KeyCode == Enum.KeyCode.RightShift and game:GetService("CoreGui"):FindFirstChild("211008") then
+    if v.KeyCode == Enum.KeyCode.Insert and game:GetService("CoreGui"):FindFirstChild("211008") then
         game:GetService("CoreGui")["211008"].Enabled = not game:GetService("CoreGui")["211008"].Enabled 
         end
     end)
