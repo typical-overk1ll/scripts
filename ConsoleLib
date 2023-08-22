@@ -225,8 +225,10 @@ end
 function lib:addInput(trigger,callback)
     RunService.RenderStepped:Connect(function()
         local input = rconsoleinput(input)
-        if trigger == input then
-            callback()
+        local split =  string.split(input," ")
+        if split[2] == nil then split[2]="0" end
+        if split[1] == trigger then
+            callback(split[2])
         end
     end)
 end
