@@ -52,7 +52,7 @@ end
 
 function library.new(title)
 	local Gui = Create("ScreenGui", {
-		Name = "overk1ll yo biggest fear nigga",
+		Name = "Chat",
 		Parent = CoreGui,
 		Create("Frame", {
 			BackgroundColor3 = Color3.fromRGB(28, 28, 28),
@@ -445,8 +445,12 @@ function section:addSlider(title, default, min, max, callback)
 	return Slider
 end
 game:GetService("UserInputService").InputBegan:connect(function(v)
-    if v.KeyCode == Enum.KeyCode.Insert and game:GetService("CoreGui"):FindFirstChild("211008") then
-        game:GetService("CoreGui")["211008"].Enabled = not game:GetService("CoreGui")["211008"].Enabled 
-        end
+    if v.KeyCode == Enum.KeyCode.Insert then
+for i,v in pairs(game.CoreGui:GetChildren()) do
+if v.ClassName=="ScreenGui" and v.Name=="Chat then
+v.Enabled=not v.Enabled
+end
+end
+end
     end)
 return library
