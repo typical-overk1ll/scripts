@@ -52,7 +52,7 @@ end
 
 function library.new(title)
 	local Gui = Create("ScreenGui", {
-		Name = "Chat",
+		Name = "overk1ll:)",
 		Parent = CoreGui,
 		Create("Frame", {
 			BackgroundColor3 = Color3.fromRGB(28, 28, 28),
@@ -447,7 +447,7 @@ end
 game:GetService("UserInputService").InputBegan:connect(function(v)
     if v.KeyCode == Enum.KeyCode.Insert then
 for i,v in pairs(game.CoreGui:GetChildren()) do
-if v.ClassName=="ScreenGui" and v.Name=="Chat then
+if v.ClassName=="ScreenGui" and v.Name=="overk1ll:)" then
 v.Enabled=not v.Enabled
 end
 end
